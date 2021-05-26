@@ -17,6 +17,7 @@ uyelikForm.addEventListener('submit',(e) => {
 
 });
 
+
 //çıkış işlemi
 const cikis = document.querySelector('#logout');
 cikis.addEventListener('click',(e) => {
@@ -25,3 +26,18 @@ cikis.addEventListener('click',(e) => {
         console.log('Çıkış işlemi başarılı');
     });
 })
+
+//giriş işlemi
+const loginForm = document.querySelector('#login-form');
+loginForm.addEventListener('submit',(e) => {
+    e.preventDefault();
+    const mail = loginForm['login-email'].value;
+    const password = loginForm['login-password'].value;
+
+    auth.signInWithEmailAndPassword(mail,password).then((sonuc) => {
+        console.log(sonuc.user);
+        const modal = document.querySelector('#modal-login');
+        M.Modal.getInstance(modal).close();
+        loginForm.reset();
+    });
+});
