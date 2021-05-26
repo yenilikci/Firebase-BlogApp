@@ -16,3 +16,12 @@ uyelikForm.addEventListener('submit',(e) => {
     });
 
 });
+
+//çıkış işlemi
+const cikis = document.querySelector('#logout');
+cikis.addEventListener('click',(e) => {
+    e.preventDefault();
+    auth.signOut().then(() => {
+        console.log('Çıkış işlemi başarılı');
+    });
+})
