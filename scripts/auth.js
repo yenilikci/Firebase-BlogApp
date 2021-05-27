@@ -4,8 +4,9 @@ auth.onAuthStateChanged(k => {
     if (k) {
         console.log("Giriş işlemi başarılı!");
         //verileri getir
-        db.collection('makaleler').get().then(snapshot => {
-            //console.log(snapshot.docs);
+        //db.collection('makaleler').get().then(snapshot => {
+        db.collection('makaleler').onSnapshot(snapshot => {
+                //console.log(snapshot.docs);
             makaleYukle(snapshot.docs);
             kullaniciYukle(k);
         });
@@ -15,6 +16,7 @@ auth.onAuthStateChanged(k => {
         kullaniciYukle();
     }
 });
+
 
 //makale oluştur
 const makaleOlusturForm = document.querySelector('#create-form');
@@ -32,6 +34,7 @@ makaleOlusturForm.addEventListener('submit',(e) => {
     });
 
 });
+
 
 //üyelik oluştur
 const uyelikForm = document.querySelector('#signup-form');
