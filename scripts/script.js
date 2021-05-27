@@ -6,10 +6,13 @@ const uyelikDetaylari = document.querySelector('.account-details');
 
 const kullaniciYukle = (kullanici) => {
     if (kullanici) {
-        let html = `
+        db.collection('kullanicilar').doc(kullanici.uid).get().then((doc) => {
+            let html = `
             <div>Kullanıcı mail: <b>${kullanici.email}</b></div>
-        `;
-        uyelikDetaylari.innerHTML = html;
+            <div>Bio: ${doc.data().bio}</div>
+            `;
+            uyelikDetaylari.innerHTML = html;
+        });
         girisLinkleri.forEach(item => {
             item.style.display = 'block';
         })
