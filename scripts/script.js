@@ -1,4 +1,25 @@
 const makaleler = document.querySelector('.guides');
+const cikisLinkleri = document.querySelectorAll('.logged-out');
+const girisLinkleri = document.querySelectorAll('.logged-in');
+
+const kullaniciYukle = (kullanici) => {
+    if (kullanici) {
+        girisLinkleri.forEach(item => {
+            item.style.display = 'block';
+        })
+        cikisLinkleri.forEach(item => {
+            item.style.display = 'none !important';
+        });
+    } else {
+        girisLinkleri.forEach(item => {
+            item.style.display = 'none';
+        });
+        cikisLinkleri.forEach(item => {
+            item.style.display = 'block';
+        });
+    }
+}
+
 
 const makaleYukle = (data) => {
     if (data.length) {
@@ -15,7 +36,7 @@ const makaleYukle = (data) => {
             html += li;
         });
         makaleler.innerHTML = html;
-    }else {
+    } else {
         makaleler.innerHTML = '<h5 class="card center-align" style="padding:20px;">Makaleler için giriş yapınız!</h5>';
     }
 }

@@ -7,10 +7,12 @@ auth.onAuthStateChanged(k => {
         db.collection('makaleler').get().then(snapshot => {
             //console.log(snapshot.docs);
             makaleYukle(snapshot.docs);
+            kullaniciYukle(k);
         });
     } else {
         console.log("Çıkış işlemi başarılı!");
         makaleYukle([]);
+        kullaniciYukle();
     }
 });
 
