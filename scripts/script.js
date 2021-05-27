@@ -1,3 +1,18 @@
+// Your web app's Firebase configuration
+var firebaseConfig = {
+    apiKey: "gizlendi",
+    authDomain: "authapp-ff570.firebaseapp.com",
+    projectId: "authapp-ff570",
+    storageBucket: "authapp-ff570.appspot.com",
+    messagingSenderId: "gizlendi",
+    appId: "gizlendi"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
+
 const makaleler = document.querySelector('.guides');
 const cikisLinkleri = document.querySelectorAll('.logged-out');
 const girisLinkleri = document.querySelectorAll('.logged-in');
@@ -29,7 +44,6 @@ const kullaniciYukle = (kullanici) => {
         });
     }
 }
-
 
 const makaleYukle = (data) => {
     if (data.length) {
