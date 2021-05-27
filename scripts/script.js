@@ -2,8 +2,14 @@ const makaleler = document.querySelector('.guides');
 const cikisLinkleri = document.querySelectorAll('.logged-out');
 const girisLinkleri = document.querySelectorAll('.logged-in');
 
+const uyelikDetaylari = document.querySelector('.account-details');
+
 const kullaniciYukle = (kullanici) => {
     if (kullanici) {
+        let html = `
+            <div>Kullanıcı mail: <b>${kullanici.email}</b></div>
+        `;
+        uyelikDetaylari.innerHTML = html;
         girisLinkleri.forEach(item => {
             item.style.display = 'block';
         })
@@ -11,6 +17,7 @@ const kullaniciYukle = (kullanici) => {
             item.style.display = 'none !important';
         });
     } else {
+        uyelikDetaylari.innerHTML = '';
         girisLinkleri.forEach(item => {
             item.style.display = 'none';
         });
