@@ -10,6 +10,7 @@ auth.onAuthStateChanged(k => {
         });
     } else {
         console.log("Çıkış işlemi başarılı!");
+        makaleYukle([]);
     }
 });
 

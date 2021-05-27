@@ -1,19 +1,23 @@
 const makaleler = document.querySelector('.guides');
 
 const makaleYukle = (data) => {
-    let html = '';
-    data.forEach(doc => {
-        const makale = doc.data();
-        //console.log(makale);
-        const li = `
+    if (data.length) {
+        let html = '';
+        data.forEach(doc => {
+            const makale = doc.data();
+            //console.log(makale);
+            const li = `
         <li>
             <div class="collapsible-header grey lighten-4">${makale.baslik}</div>
             <div class="collapsible-body white">${makale.icerik}</div>
         </li>
         `;
-        html += li;
-    });
-    makaleler.innerHTML = html;
+            html += li;
+        });
+        makaleler.innerHTML = html;
+    }else {
+        makaleler.innerHTML = '<h5 class="card center-align" style="padding:20px;">Makaleler için giriş yapınız!</h5>';
+    }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
