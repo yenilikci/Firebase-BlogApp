@@ -16,6 +16,22 @@ auth.onAuthStateChanged(k => {
     }
 });
 
+//makale oluştur
+const makaleOlusturForm = document.querySelector('#create-form');
+makaleOlusturForm.addEventListener('submit',(e) => {
+    e.preventDefault();
+    db.collection('makaleler').add({
+        baslik:makaleOlusturForm['title'].value,
+        icerik:makaleOlusturForm['content'].value
+    }).then(() => {
+        const modal = document.querySelector('#modal-create');
+        M.Modal.getInstance(modal).close();
+        makaleOlusturForm.reset();
+    }).catch(err => {
+        console.log(err.message);
+    });
+
+});
 
 //üyelik oluştur
 const uyelikForm = document.querySelector('#signup-form');
